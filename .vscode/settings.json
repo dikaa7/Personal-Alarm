@@ -1,0 +1,15 @@
+{
+    "python.linting.pylintEnabled": true,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pydocstyleEnabled": false,
+    "python.linting.pylamaEnabled": false,
+    "python.linting.mypyEnabled": false,
+    "python.pythonPath": "/bin/python3",
+    "editor.fontSize": 12,
+    "editor.tabSize": 3,
+    "editor.wordWrap": "on",
+    "editor.cursorBlinking": "phase",
+    "workbench.list.openMode": "doubleClick"
+}

@@ -1,12 +1,12 @@
 import time
-import tkinter
+
 
 class Time(object):
-	"""docstring for Time"""
-	"""hours = 0
+	""" docstring for Time"""
+	""" hours = 0
 	minutes = 0
 	seconds = 0"""
-	def __init__(self, hours = 0, minutes = 0, seconds = 0):
+	def __init__(self, hours=0, minutes=0, seconds=0):
 		super(Time, self).__init__()
 		self.hours = hours
 		self.minutes = minutes
@@ -59,6 +59,7 @@ class Time(object):
 			self.seconds -= 60
 		return self.hours
 
-clock = Time(0,0,0)
+
+clock = Time(0, 0, 0)
 clock.timer()
 print("Anda Keluar dari Timer")
