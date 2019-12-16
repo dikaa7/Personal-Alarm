@@ -1,41 +1,63 @@
 import time
 import tkinter
-seconds = 55
-minutes = 45
-hours = 2
 
+class Time(object):
+	"""docstring for Time"""
+	"""hours = 0
+	minutes = 0
+	seconds = 0"""
+	def __init__(self, hours = 0, minutes = 0, seconds = 0):
+		super(Time, self).__init__()
+		self.hours = hours
+		self.minutes = minutes
+		self.seconds = seconds
 
-def clock(hours, minutes, seconds):
-	while True:
-		print(str(hours).zfill(2) + ":" + str(minutes).zfill(2) + ":" + str(seconds).zfill(2))
-		time.sleep(1)
+	def clock(self):
+		while True:
+			print(str(self.hours).zfill(2) + ":" + str(self.minutes).zfill(2) + ":" + str(self.seconds).zfill(2))
+			time.sleep(1)
+			self.seconds += 1
+			if not self.isSecondValid():
+				self.seconds -= 60
+				self.minutes += 1
+			if not self.isMinutesValid():
+				self.minutes -= 60
+				self.hours += 1
 
-		seconds += 1
-		if not isSecondValid(seconds):
-			seconds -= 60
-			minutes += 1
-		if not isMinutesValid(minutes):
-			minutes -= 60
-			hours += 1
+	def timer(self):
+		while True:
+			if(self.isTimerOff()):
+				print("Time Off")
+				break
+			else:
+				print(str(self.hours).zfill(2) + ":" + str(self.minutes).zfill(2) + ":" + str(self.seconds).zfill(2))
+				time.sleep(1)
+				self.seconds -= 1
+				if not self.isSecondValid():
+					self.seconds += 60
+					self.minutes -= 1
+				if not self.isMinutesValid():
+					self.minutes += 60
+					self.hours -= 1
 
-def  isSecondValid(seconds):
-	return (seconds < 60)
+	def isTimerOff(self):
+		return (self.hours == 0) and (self.minutes == 0) and (self.seconds == 0)
 
-def  isMinutesValid(minutes):
-	return (minutes < 60)
+	def isSecondValid(self):
+		return (self.seconds >= 0) and (self.seconds < 60)
 
-def isHoursValid(hours):
-	return (hours < 24)
+	def isMinutesValid(self):
+		return (self.minutes >= 0) and (self.minutes < 60)
 
-def minutesToHours(seconds):
-	hours = 0
-	while(not isSecondValid(seconds)):
-		hours += 1
-		seconds -= 60
-	return hours
+	def isHoursValid(self):
+		return (self.hours >= 0) and (self.hours < 24)
 
+	def minutesToHours(self):
+		self.hours = 0
+		while(not self.isSecondValid()):
+			self.hours += 1
+			self.seconds -= 60
+		return self.hours
 
-window = tkinter.Tk()
-window.title("My clock")
-
-window.mainloop()
+clock = Time(0,0,0)
+clock.timer()
