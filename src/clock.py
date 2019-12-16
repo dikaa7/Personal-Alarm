@@ -61,3 +61,4 @@ class Time(object):
 
 clock = Time(0,0,0)
 clock.timer()
+print("Anda Keluar dari Timer")
